@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FURBABY Dog Shop - Premium Accessories USA</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        amberYellow: {
+                            50: '#FFFBEB',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            300: '#FCD34D',
+                            400: '#FBBF24',
+                            500: '#F59E0B',
+                            600: '#D97706',
+                            700: '#B45309',
+                        },
+                        warmBrown: {
+                            50: '#FDF8F6',
+                            100: '#EFEBE9',
+                            200: '#D7CCC8',
+                            300: '#A1887F',
+                            600: '#92400E',
+                            700: '#78350F',
+                            800: '#5A2709',
+                            900: '#451A03',
+                            950: '#260F02',
+                        },
+                        whatsapp: '#25D366',
+                        whatsappDark: '#1EBE57'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        .animate-bounce-subtle {
+            animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-amberYellow-50 text-warmBrown-900 antialiased selection:bg-amberYellow-400 selection:text-warmBrown-950 min-h-screen flex flex-col">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-warmBrown-950 via-warmBrown-900 to-amberYellow-700 text-amberYellow-100 text-xs sm:text-sm py-2.5 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+            <div class="flex items-center gap-2">
+                <span class="bg-amberYellow-500 text-warmBrown-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">USA Special</span>
+                <span class="font-medium">🐶 Free USA Shipping on Orders Over <strong>$35.00 USD</strong></span>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <a href="https://wa.me/19988998899" target="_blank" class="hover:text-amberYellow-300 flex items-center gap-1.5 transition-colors font-bold">
+                    <i class="fa-brands fa-whatsapp text-whatsapp text-base"></i> WhatsApp Order Line: <span class="underline underline-offset-2">+1 9988998899</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-amberYellow-200 transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 gap-4">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 text-2xl sm:text-3xl font-black tracking-tight text-warmBrown-900 group">
+                        <span class="p-2 bg-amberYellow-400 text-warmBrown-950 rounded-2xl shadow-md rotate-[-6deg] group-hover:rotate-0 inline-block border border-amberYellow-500 transition-transform">
+                            <i class="fa-solid fa-paw"></i>
+                        </span>
+                        <span>FUR<span class="text-amberYellow-600">BABY</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation Bar -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-6 text-sm font-extrabold text-warmBrown-900">
+                    <a href="index.html" class="hover:text-amberYellow-600 hover:bg-amberYellow-100/60 px-3 py-2 rounded-xl transition-all">Home</a>
+                    <a href="shop.html" class="text-amberYellow-700 bg-amberYellow-100/80 px-3 py-2 rounded-xl transition-all">Shop</a>
+                    <a href="about.html" class="hover:text-amberYellow-600 hover:bg-amberYellow-100/60 px-3 py-2 rounded-xl transition-all">About Us</a>
+                    <a href="#privacy" class="hover:text-amberYellow-600 hover:bg-amberYellow-100/60 px-3 py-2 rounded-xl transition-all">Privacy Policy</a>
+                    <a href="#disclaimer" class="hover:text-amberYellow-600 hover:bg-amberYellow-100/60 px-3 py-2 rounded-xl transition-all">Disclaimer</a>
+                    <a href="#contact" class="hover:text-amberYellow-600 hover:bg-amberYellow-100/60 px-3 py-2 rounded-xl transition-all">Contact Us</a>
+                </nav>
+
+                <!-- Header Actions & Mobile Toggle Button -->
+                <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                    <!-- Wishlist Button -->
+                    <button onclick="toggleWishlistModal()" class="p-2.5 text-warmBrown-800 hover:text-amberYellow-600 hover:bg-amberYellow-100 rounded-full transition-all relative" title="Wishlist">
+                        <i class="fa-regular fa-heart text-xl"></i>
+                        <span id="wishlistBadge" class="hidden absolute top-1 right-1 bg-amberYellow-500 text-warmBrown-950 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+                    </button>
+
+                    <!-- Cart Drawer Button -->
+                    <button onclick="toggleCartDrawer()" class="p-2 sm:px-4 sm:py-2.5 bg-amberYellow-400 hover:bg-amberYellow-500 text-warmBrown-950 font-black rounded-2xl transition-all relative flex items-center gap-2 shadow-sm border border-amberYellow-500">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <span class="hidden md:inline text-xs uppercase tracking-wider">Cart</span>
+                        <span id="cartBadge" class="bg-warmBrown-900 text-amberYellow-300 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-inner">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-warmBrown-900 hover:bg-amberYellow-100 rounded-2xl transition-all focus:outline-none" aria-label="Toggle Menu">
+                        <i id="mobileMenuIcon" class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-amberYellow-200 px-4 pt-2 pb-6 space-y-2 shadow-lg transition-all duration-300">
+            <a href="#home" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-warmBrown-900 hover:bg-amberYellow-100 flex items-center gap-3">
+                <i class="fa-solid fa-house text-amberYellow-600 w-5"></i> Home
+            </a>
+            <a href="#shop" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-amberYellow-700 bg-amberYellow-50 flex items-center gap-3">
+                <i class="fa-solid fa-store text-amberYellow-600 w-5"></i> Shop Catalog
+            </a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-warmBrown-900 hover:bg-amberYellow-100 flex items-center gap-3">
+                <i class="fa-solid fa-circle-info text-amberYellow-600 w-5"></i> About Us
+            </a>
+            <a href="#privacy" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-warmBrown-900 hover:bg-amberYellow-100 flex items-center gap-3">
+                <i class="fa-solid fa-user-shield text-amberYellow-600 w-5"></i> Privacy Policy
+            </a>
+            <a href="#disclaimer" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-warmBrown-900 hover:bg-amberYellow-100 flex items-center gap-3">
+                <i class="fa-solid fa-triangle-exclamation text-amberYellow-600 w-5"></i> Disclaimer
+            </a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl font-bold text-warmBrown-900 hover:bg-amberYellow-100 flex items-center gap-3">
+                <i class="fa-solid fa-envelope text-amberYellow-600 w-5"></i> Contact Us
+            </a>
+        </div>
+    </header>
+
+    <!-- Shop Page Banner -->
+    <section id="home" class="bg-gradient-to-br from-amberYellow-200 via-amberYellow-100 to-amberYellow-50 py-12 border-b border-amberYellow-300 relative overflow-hidden">
+        <div class="absolute -top-12 -left-12 w-64 h-64 bg-amberYellow-300/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amberYellow-300 text-warmBrown-950 font-black text-xs uppercase tracking-widest border border-amberYellow-400 mb-3">
+                <i class="fa-solid fa-shield-dog text-amberYellow-700"></i> Verified USA Accessories Store
+            </span>
+            <h1 class="text-3xl sm:text-5xl font-black text-warmBrown-900 tracking-tight">
+                FURBABY Dog Shop - All Accessories
+            </h1>
+            <p class="text-warmBrown-800 text-sm sm:text-base max-w-2xl mx-auto mt-2 font-medium">
+                Explore our collection of durable collars, cozy clothes, anti-gulp bowls, and chew toys. Quality tested for tail-wagging happiness at reasonable USD ($) prices!
+            </p>
+        </div>
+    </section>
+
+    <!-- Main E-Commerce Section -->
+    <section id="shop" class="py-10 flex-1 bg-amberYellow-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Controls & Filters Header Bar -->
+            <div class="bg-white p-5 rounded-3xl border border-amberYellow-200 shadow-md mb-8 space-y-4">
+                
+                <!-- Row 1: Search & Sorting -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                    
+                    <!-- Search Input -->
+                    <div class="md:col-span-6 relative">
+                        <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="Search collars, fleece hoodie, slow feeder bowl, chew ball..." 
+                               class="w-full pl-10 pr-10 py-3 rounded-2xl border border-amberYellow-300 bg-amberYellow-50/30 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amberYellow-500 text-warmBrown-900 font-medium">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 sm:top-4 text-warmBrown-600"></i>
+                        <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3.5 top-3.5 sm:top-4 text-warmBrown-600 hover:text-warmBrown-950">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <!-- Max Price Slider -->
+                    <div class="md:col-span-3 flex items-center gap-2 bg-amberYellow-50/50 p-2.5 rounded-2xl border border-amberYellow-200">
+                        <label class="text-xs font-bold text-warmBrown-900 whitespace-nowrap">Max Price:</label>
+                        <input type="range" id="priceRange" min="8" max="40" value="40" step="1" oninput="updatePriceLabel(this.value); filterProducts();" class="w-full accent-amberYellow-600 cursor-pointer">
+                        <span id="priceValue" class="text-xs font-black text-warmBrown-900 min-w-[50px]">$40.00</span>
+                    </div>
+
+                    <!-- Sort Dropdown -->
+                    <div class="md:col-span-3">
+                        <select id="sortSelect" onchange="filterProducts()" class="w-full py-3 px-3 rounded-2xl border border-amberYellow-300 bg-white text-xs font-bold text-warmBrown-900 focus:outline-none focus:ring-2 focus:ring-amberYellow-500">
+                            <option value="featured">Sort: Featured Picks</option>
+                            <option value="lowHigh">Price: Low to High</option>
+                            <option value="highLow">Price: High to Low</option>
+                            <option value="topRated">Top Rated</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Row 2: Category Filter Tabs -->
+                <div class="flex items-center justify-between border-t border-amberYellow-100 pt-3 gap-2 overflow-x-auto hide-scrollbar">
+                    <div class="flex items-center gap-1.5 sm:gap-2">
+                        <button onclick="setCategoryFilter('all')" id="tab-all" class="category-tab px-4 py-2 rounded-xl text-xs font-black transition-all bg-amberYellow-500 text-warmBrown-950 border border-amberYellow-600 shadow-sm whitespace-nowrap">
+                            All Items (12)
+                        </button>
+                        <button onclick="setCategoryFilter('collars')" id="tab-collars" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all text-warmBrown-800 bg-amberYellow-50 hover:bg-amberYellow-100 border border-amberYellow-200 whitespace-nowrap">
+                            Neck Collars (3)
+                        </button>
+                        <button onclick="setCategoryFilter('clothes')" id="tab-clothes" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all text-warmBrown-800 bg-amberYellow-50 hover:bg-amberYellow-100 border border-amberYellow-200 whitespace-nowrap">
+                            Dog Clothes (3)
+                        </button>
+                        <button onclick="setCategoryFilter('bowls')" id="tab-bowls" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all text-warmBrown-800 bg-amberYellow-50 hover:bg-amberYellow-100 border border-amberYellow-200 whitespace-nowrap">
+                            Bowls (3)
+                        </button>
+                        <button onclick="setCategoryFilter('toys')" id="tab-toys" class="category-tab px-4 py-2 rounded-xl text-xs font-bold transition-all text-warmBrown-800 bg-amberYellow-50 hover:bg-amberYellow-100 border border-amberYellow-200 whitespace-nowrap">
+                            Toys (3)
+                        </button>
+                    </div>
+
+                    <div class="text-xs font-bold text-warmBrown-700 hidden lg:block">
+                        Showing <span id="itemCount" class="text-warmBrown-950 font-black">12</span> items
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- JavaScript populated product cards -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="noResults" class="hidden text-center py-16 bg-white rounded-3xl border border-dashed border-amberYellow-300">
+                <div class="w-16 h-16 mx-auto bg-amberYellow-100 text-amberYellow-600 rounded-full flex items-center justify-center text-3xl mb-3">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3 class="text-xl font-black text-warmBrown-900">No products match your criteria</h3>
+                <p class="text-warmBrown-700 text-sm mt-1">Try clearing filters or searching for another keyword.</p>
+                <button onclick="resetFilters()" class="mt-4 px-6 py-2.5 bg-amberYellow-500 text-warmBrown-950 text-xs font-black rounded-xl border border-amberYellow-600">
+                    Reset All Filters
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- USA Perks & Guarantees Bar -->
+    <section class="py-12 bg-white border-y border-amberYellow-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-2xl bg-amberYellow-50 border border-amberYellow-200">
+                    <div class="w-12 h-12 mx-auto bg-amberYellow-500 text-warmBrown-950 rounded-2xl flex items-center justify-center text-xl mb-2 font-bold">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h4 class="font-black text-warmBrown-900 text-sm">Free Shipping over $35</h4>
+                    <p class="text-xs text-warmBrown-700 mt-1">Fast 3-5 day delivery across all 50 USA states.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-amberYellow-50 border border-amberYellow-200">
+                    <div class="w-12 h-12 mx-auto bg-warmBrown-800 text-amberYellow-300 rounded-2xl flex items-center justify-center text-xl mb-2 font-bold">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                    </div>
+                    <h4 class="font-black text-warmBrown-900 text-sm">Instant WhatsApp Orders</h4>
+                    <p class="text-xs text-warmBrown-700 mt-1">Order directly with 1-click via +1 9988998899.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-amberYellow-50 border border-amberYellow-200">
+                    <div class="w-12 h-12 mx-auto bg-amberYellow-500 text-warmBrown-950 rounded-2xl flex items-center justify-center text-xl mb-2 font-bold">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h4 class="font-black text-warmBrown-900 text-sm">Non-Toxic & Pet Safe</h4>
+                    <p class="text-xs text-warmBrown-700 mt-1">BPA-free materials tested by USA veterinarians.</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-amberYellow-50 border border-amberYellow-200">
+                    <div class="w-12 h-12 mx-auto bg-warmBrown-800 text-amberYellow-300 rounded-2xl flex items-center justify-center text-xl mb-2 font-bold">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </div>
+                    <h4 class="font-black text-warmBrown-900 text-sm">30-Day Hassle-Free</h4>
+                    <p class="text-xs text-warmBrown-700 mt-1">Easy size exchanges & customer refund support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warmBrown-950 text-amberYellow-100 pt-12 pb-10 border-t-4 border-amberYellow-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-warmBrown-800">
+                
+                <div class="lg:col-span-2 space-y-3">
+                    <a href="#home" class="flex items-center gap-2 text-2xl font-black text-white">
+                        <span class="p-2 bg-amberYellow-400 text-warmBrown-950 rounded-xl rotate-[-6deg]">
+                            <i class="fa-solid fa-paw"></i>
+                        </span>
+                        <span>FUR<span class="text-amberYellow-400">BABY</span></span>
+                    </a>
+                    <p class="text-xs text-amberYellow-200/80 leading-relaxed max-w-sm">
+                        FURBABY USA offers affordable dog neck collars, clothes, slow feeder bowls, and chew toys. Quality engineered for safety and daily tail wags!
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black text-amberYellow-400 uppercase tracking-widest mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs text-amberYellow-200/80 font-medium">
+                        <li><a href="index.html" class="hover:text-amberYellow-400">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-amberYellow-400">Shop Catalog</a></li>
+                        <li><a href="#about" class="hover:text-amberYellow-400">About Us</a></li>
+                        <li><a href="#privacy" class="hover:text-amberYellow-400">Privacy Policy</a></li>
+                        <li><a href="#disclaimer" class="hover:text-amberYellow-400">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black text-amberYellow-400 uppercase tracking-widest mb-3">Categories</h4>
+                    <ul class="space-y-2 text-xs text-amberYellow-200/80 font-medium">
+                        <li><a href="#shop" onclick="setCategoryFilter('collars')" class="hover:text-amberYellow-400">Neck Collars</a></li>
+                        <li><a href="#shop" onclick="setCategoryFilter('clothes')" class="hover:text-amberYellow-400">Dog Clothes</a></li>
+                        <li><a href="#shop" onclick="setCategoryFilter('bowls')" class="hover:text-amberYellow-400">Bowls & Feeders</a></li>
+                        <li><a href="#shop" onclick="setCategoryFilter('toys')" class="hover:text-amberYellow-400">Chew Toys</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-black text-amberYellow-400 uppercase tracking-widest mb-3">WhatsApp Order Line</h4>
+                    <div class="bg-warmBrown-900 p-3 rounded-2xl border border-amberYellow-500/30 space-y-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl text-whatsapp"></i>
+                            <div>
+                                <p class="text-[10px] text-amberYellow-300">USA Hotline</p>
+                                <p class="text-xs font-black text-white">+1 9988998899</p>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/19988998899?text=Hi%20FURBABY!" target="_blank" class="block w-full text-center py-1.5 bg-whatsapp hover:bg-whatsappDark text-white text-[10px] font-black rounded-xl">
+                            Chat Now
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-amberYellow-200/60 gap-3">
+                <p>© 2026 FURBABY USA Dog Supplies. All rights reserved.</p>
+                <p><i class="fa-solid fa-lock text-amberYellow-400"></i> Encrypted WhatsApp USD Checkout</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/19988998899?text=Hello%20FURBABY!%20I%20have%20an%20inquiry%20about%20your%20dog%20supplies." 
+           target="_blank" 
+           class="flex items-center gap-2.5 bg-whatsapp hover:bg-whatsappDark text-white px-4 py-3 rounded-full shadow-2xl transition-all font-bold text-xs animate-bounce-subtle border-2 border-white">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <span class="hidden sm:inline font-extrabold">WhatsApp (+1 9988998899)</span>
+        </a>
+    </div>
+
+    <!-- Cart Slide-Over Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" role="dialog" aria-modal="true">
+        <div onclick="toggleCartDrawer()" class="fixed inset-0 bg-warmBrown-950/70 backdrop-blur-sm transition-opacity"></div>
+
+        <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="pointer-events-auto w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                
+                <div class="p-5 bg-warmBrown-900 text-amberYellow-100 flex items-center justify-between border-b border-amberYellow-500/30">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-xl text-amberYellow-400"></i>
+                        <h2 class="text-base font-black text-white">Your Shopping Cart</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-amberYellow-200 hover:text-white p-1">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Free Shipping Progress -->
+                <div class="bg-amberYellow-100 p-3 px-5 text-xs text-warmBrown-900 border-b border-amberYellow-200">
+                    <p id="shippingProgressText" class="font-bold mb-1">Add $35.00 for FREE USA Shipping!</p>
+                    <div class="w-full bg-amberYellow-200 h-2 rounded-full overflow-hidden">
+                        <div id="shippingProgressBar" class="bg-amberYellow-500 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+
+                <!-- Items Container -->
+                <div id="cartItemsList" class="flex-1 overflow-y-auto p-5 space-y-3">
+                    <!-- JavaScript populated -->
+                </div>
+
+                <!-- Empty State Cart -->
+                <div id="emptyCartState" class="hidden flex-1 flex flex-col items-center justify-center p-6 text-center">
+                    <div class="w-16 h-16 bg-amberYellow-100 text-amberYellow-600 rounded-full flex items-center justify-center text-2xl mb-3">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-warmBrown-900">Your cart is empty</h3>
+                    <p class="text-xs text-warmBrown-700 mt-1">Add dog collars, hoodies, or toys to start!</p>
+                </div>
+
+                <!-- Drawer Footer -->
+                <div id="cartFooter" class="p-5 bg-amberYellow-50 border-t border-amberYellow-200 space-y-3">
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-warmBrown-700">
+                            <span>Subtotal</span>
+                            <span id="cartSubtotal" class="font-bold text-warmBrown-900">$0.00 USD</span>
+                        </div>
+                        <div class="flex justify-between text-warmBrown-700">
+                            <span>USA Standard Shipping</span>
+                            <span id="shippingCost" class="font-bold text-green-700">Calculated</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-black text-warmBrown-900 pt-2 border-t border-amberYellow-200">
+                            <span>Total (USD)</span>
+                            <span id="cartTotal" class="text-amberYellow-600">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button onclick="checkoutViaWhatsApp()" class="w-full py-3.5 bg-whatsapp hover:bg-whatsappDark text-white font-black rounded-2xl shadow-md flex items-center justify-center gap-2 transition-all text-xs uppercase tracking-wider">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Order via WhatsApp (+1 9988998899)</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Product Modal -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div onclick="closeQuickView()" class="fixed inset-0 bg-warmBrown-950/70 backdrop-blur-sm"></div>
+        <div class="flex min-h-full items-center justify-center p-4">
+            <div class="relative bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-amberYellow-200">
+                <button onclick="closeQuickView()" class="absolute top-4 right-4 z-10 w-8 h-8 bg-amberYellow-100 rounded-full flex items-center justify-center text-warmBrown-900 font-bold hover:bg-amberYellow-200">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div id="quickViewContent">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+        <div onclick="toggleWishlistModal()" class="fixed inset-0 bg-warmBrown-950/70 backdrop-blur-sm"></div>
+        <div class="flex min-h-full items-center justify-center p-4">
+            <div class="relative bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-amberYellow-200">
+                <div class="flex justify-between items-center pb-3 border-b border-amberYellow-100 mb-4">
+                    <h3 class="text-base font-black text-warmBrown-900 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-amberYellow-600"></i> Saved Items
+                    </h3>
+                    <button onclick="toggleWishlistModal()" class="text-warmBrown-600 hover:text-warmBrown-900">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+                <div id="wishlistItemsList" class="space-y-3 max-h-80 overflow-y-auto">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Exact 12 Product Items Dataset
+        const products = [
+            // Neck Collars
+            {
+                id: 'c1',
+                name: 'Soft Padded Leather Dog Collar',
+                category: 'collars',
+                price: 18.99,
+                origPrice: 24.99,
+                rating: 4.9,
+                reviews: 142,
+                image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=600&q=80',
+                badge: 'Best Seller',
+                desc: 'Genuine leather with soft inner padding to protect your dog\'s neck skin. Heavy-duty brass buckle.'
+            },
+            {
+                id: 'c2',
+                name: 'LED Safety Night Glow Collar',
+                category: 'collars',
+                price: 14.99,
+                origPrice: 19.99,
+                rating: 4.8,
+                reviews: 98,
+                image: 'https://images.unsplash.com/photo-1535294435445-d7249524ef2e?auto=format&fit=crop&w=600&q=80',
+                badge: 'Night Safety',
+                desc: 'USB rechargeable LED illumination strip with 3 flashing modes for dark evening walks.'
+            },
+            {
+                id: 'c3',
+                name: 'Heavy-Duty Tactical Nylon Collar',
+                category: 'collars',
+                price: 12.99,
+                origPrice: 17.50,
+                rating: 4.7,
+                reviews: 84,
+                image: 'https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&w=600&q=80',
+                badge: 'Durable',
+                desc: 'Double-layer military grade nylon webbing with quick release metal buckle and control handle.'
+            },
+
+            // Clothes
+            {
+                id: 'cl1',
+                name: 'Cozy Fleece Dog Hoodie',
+                category: 'clothes',
+                price: 22.99,
+                origPrice: 29.99,
+                rating: 4.9,
+                reviews: 210,
+                image: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=80',
+                badge: 'Cozy Pick',
+                desc: 'Ultra-warm fleece hoodie with leash slot on back. Easy stretch fit for medium and small dogs.'
+            },
+            {
+                id: 'cl2',
+                name: 'Waterproof Reflective Raincoat',
+                category: 'clothes',
+                price: 26.99,
+                origPrice: 34.99,
+                rating: 4.8,
+                reviews: 115,
+                image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80',
+                badge: 'Waterproof',
+                desc: 'Lightweight windproof raincoat with reflective security strips for rainy day strolls.'
+            },
+            {
+                id: 'cl3',
+                name: 'Knit Bowtie Dog Sweater',
+                category: 'clothes',
+                price: 19.99,
+                origPrice: 25.00,
+                rating: 4.6,
+                reviews: 67,
+                image: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=600&q=80',
+                badge: 'Stylish',
+                desc: 'Elegant knitted acrylic sweater complete with a removable bow tie accent. Perfect for photos.'
+            },
+
+            // Bowls
+            {
+                id: 'b1',
+                name: 'Anti-Gulp Slow Feeder Bowl',
+                category: 'bowls',
+                price: 15.99,
+                origPrice: 21.99,
+                rating: 4.9,
+                reviews: 180,
+                image: 'https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?auto=format&fit=crop&w=600&q=80',
+                badge: 'Vet Approved',
+                desc: 'Interactive maze design slows feeding pace by 10x to eliminate bloat and digestive issues.'
+            },
+            {
+                id: 'b2',
+                name: 'Stainless Steel Non-Slip Bowl',
+                category: 'bowls',
+                price: 13.99,
+                origPrice: 18.99,
+                rating: 4.7,
+                reviews: 130,
+                image: 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=600&q=80',
+                badge: 'Heavy Duty',
+                desc: 'Food grade rust-proof stainless steel body with rubber non-skid base ring.'
+            },
+            {
+                id: 'b3',
+                name: 'Elevated Double Diner Stand',
+                category: 'bowls',
+                price: 32.99,
+                origPrice: 42.00,
+                rating: 4.9,
+                reviews: 155,
+                image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&q=80',
+                badge: 'Ergonomic',
+                desc: 'Natural bamboo stand elevated to protect your dog\'s spine and neck while drinking/eating.'
+            },
+
+            // Toys
+            {
+                id: 't1',
+                name: 'Rubber Chew Treat Ball',
+                category: 'toys',
+                price: 11.99,
+                origPrice: 16.99,
+                rating: 4.9,
+                reviews: 240,
+                image: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80',
+                badge: 'Chew Proof',
+                desc: '100% natural chew-resistant rubber ball featuring treat holding grooves for active play.'
+            },
+            {
+                id: 't2',
+                name: 'Heavy-Duty Cotton Rope Tug Toy',
+                category: 'toys',
+                price: 8.99,
+                origPrice: 12.99,
+                rating: 4.7,
+                reviews: 112,
+                image: 'https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=600&q=80',
+                badge: 'Teeth Cleaner',
+                desc: 'Multi-knot tightly braided natural cotton fibers that clean teeth and massage gums.'
+            },
+            {
+                id: 't3',
+                name: 'Interactive Squeaky Plush Bone',
+                category: 'toys',
+                price: 10.50,
+                origPrice: 14.50,
+                rating: 4.8,
+                reviews: 195,
+                image: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80',
+                badge: 'Fun Sound',
+                desc: 'Reinforced inner stitching with double squeakers for long-lasting indoor entertainment.'
+            }
+        ];
+
+        let cart = [];
+        let wishlist = [];
+        let currentCategory = 'all';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            updateWishlistUI();
+        });
+
+        // Toggle Mobile Navigation
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        function updatePriceLabel(val) {
+            document.getElementById('priceValue').innerText = `$${parseFloat(val).toFixed(2)}`;
+        }
+
+        // Product Catalog Filter and Render Logic
+        function filterProducts() {
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+            const maxPrice = parseFloat(document.getElementById('priceRange').value);
+            const sortVal = document.getElementById('sortSelect').value;
+
+            let filtered = products.filter(p => {
+                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchVal) || p.desc.toLowerCase().includes(searchVal);
+                const matchPrice = p.price <= maxPrice;
+                return matchCategory && matchSearch && matchPrice;
+            });
+
+            // Sorting logic
+            if (sortVal === 'lowHigh') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'highLow') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortVal === 'topRated') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            }
+
+            document.getElementById('itemCount').innerText = filtered.length;
+            renderGrid(filtered);
+        }
+
+        function renderProducts() {
+            filterProducts();
+        }
+
+        function renderGrid(list) {
+            const grid = document.getElementById('productGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (list.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            grid.innerHTML = list.map(p => {
+                const isWishlisted = wishlist.includes(p.id);
+                const waMessage = encodeURIComponent(`Hello FURBABY! I would like to order ${p.name} ($${p.price.toFixed(2)} USD).`);
+                const waLink = `https://wa.me/19988998899?text=${waMessage}`;
+
+                return `
+                    <div class="bg-white rounded-3xl overflow-hidden border border-amberYellow-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group relative">
+                        
+                        <!-- Image Container -->
+                        <div class="relative overflow-hidden bg-amberYellow-100/40 h-48">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            
+                            <span class="absolute top-3 left-3 bg-amberYellow-400 text-warmBrown-950 text-[10px] font-black px-2.5 py-1 rounded-full shadow-sm border border-amberYellow-500">
+                                ${p.badge}
+                            </span>
+
+                            <button onclick="toggleWishlist('${p.id}')" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-warmBrown-700 hover:text-rose-500 shadow-sm transition-colors">
+                                <i class="${isWishlisted ? 'fa-solid text-rose-500' : 'fa-regular'} fa-heart text-sm"></i>
+                            </button>
+
+                            <button onclick="openQuickView('${p.id}')" class="absolute bottom-3 left-1/2 -translate-x-1/2 bg-warmBrown-900 text-amberYellow-200 text-xs font-bold px-3 py-1.5 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 whitespace-nowrap">
+                                <i class="fa-solid fa-eye text-amberYellow-400"></i> Quick View
+                            </button>
+                        </div>
+
+                        <!-- Info Content -->
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between text-xs text-warmBrown-600 mb-1">
+                                    <div class="flex items-center text-amberYellow-500 gap-1 font-bold">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span class="text-warmBrown-900">${p.rating}</span>
+                                        <span class="text-warmBrown-600 font-normal">(${p.reviews})</span>
+                                    </div>
+                                    <span class="uppercase tracking-wider text-[10px] font-black text-amberYellow-700">${p.category}</span>
+                                </div>
+
+                                <h3 class="font-black text-warmBrown-900 text-sm leading-snug group-hover:text-amberYellow-700 transition-colors">${p.name}</h3>
+                                <p class="text-xs text-warmBrown-700 mt-1 line-clamp-2 leading-relaxed">${p.desc}</p>
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-amberYellow-100">
+                                <div class="flex items-baseline justify-between mb-3">
+                                    <div>
+                                        <span class="text-lg font-black text-warmBrown-900">$${p.price.toFixed(2)}</span>
+                                        <span class="text-xs text-warmBrown-600 line-through ml-1">$${p.origPrice.toFixed(2)}</span>
+                                    </div>
+                                    <span class="text-[10px] bg-amberYellow-200 text-warmBrown-950 font-extrabold px-1.5 py-0.5 rounded">USD</span>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-2">
+                                    <a href="${waLink}" target="_blank" 
+                                       class="bg-whatsapp hover:bg-whatsappDark text-white text-xs font-bold py-2 rounded-xl flex items-center justify-center gap-1 transition-colors shadow-sm">
+                                        <i class="fa-brands fa-whatsapp text-sm"></i> Buy
+                                    </a>
+
+                                    <button onclick="addToCart('${p.id}')" 
+                                            class="bg-amberYellow-400 hover:bg-amberYellow-500 text-warmBrown-950 text-xs font-black py-2 rounded-xl flex items-center justify-center gap-1 transition-colors border border-amberYellow-500">
+                                        <i class="fa-solid fa-cart-plus"></i> + Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function setCategoryFilter(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('bg-amberYellow-500', 'text-warmBrown-950', 'border-amberYellow-600');
+                tab.classList.add('bg-amberYellow-50', 'text-warmBrown-800', 'border-amberYellow-200');
+            });
+
+            const activeTab = document.getElementById(`tab-${cat}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-amberYellow-50', 'text-warmBrown-800', 'border-amberYellow-200');
+                activeTab.classList.add('bg-amberYellow-500', 'text-warmBrown-950', 'border-amberYellow-600');
+            }
+
+            filterProducts();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            filterProducts();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('priceRange').value = 40;
+            document.getElementById('sortSelect').value = 'featured';
+            updatePriceLabel(40);
+            setCategoryFilter('all');
+        }
+
+        // Cart Drawer Logic
+        function addToCart(productId) {
+            const prod = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...prod, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function updateCartQty(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.qty += change;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartBadge').innerText = count;
+
+            const list = document.getElementById('cartItemsList');
+            const emptyState = document.getElementById('emptyCartState');
+            const footer = document.getElementById('cartFooter');
+
+            if (cart.length === 0) {
+                list.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                footer.classList.add('hidden');
+                updateShippingProgress(0);
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            footer.classList.remove('hidden');
+
+            let subtotal = 0;
+            list.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+
+                return `
+                    <div class="flex items-center gap-3 p-2.5 bg-amberYellow-50/80 rounded-2xl border border-amberYellow-200">
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-xs text-warmBrown-900 line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-amberYellow-700 font-black mt-0.5">$${item.price.toFixed(2)} USD</p>
+                            <div class="flex items-center gap-2 mt-1.5">
+                                <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 rounded bg-white border border-amberYellow-300 flex items-center justify-center text-xs font-bold text-warmBrown-900 hover:bg-amberYellow-100">-</button>
+                                <span class="text-xs font-black text-warmBrown-900">${item.qty}</span>
+                                <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 rounded bg-white border border-amberYellow-300 flex items-center justify-center text-xs font-bold text-warmBrown-900 hover:bg-amberYellow-100">+</button>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="font-black text-xs text-warmBrown-900">$${itemTotal.toFixed(2)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            updateShippingProgress(subtotal);
+
+            const shipping = subtotal >= 35 ? 0 : 5.99;
+            document.getElementById('cartSubtotal').innerText = `$${subtotal.toFixed(2)} USD`;
+            document.getElementById('shippingCost').innerText = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)} USD`;
+            document.getElementById('cartTotal').innerText = `$${(subtotal + shipping).toFixed(2)} USD`;
+        }
+
+        function updateShippingProgress(subtotal) {
+            const txt = document.getElementById('shippingProgressText');
+            const bar = document.getElementById('shippingProgressBar');
+            
+            if (subtotal >= 35) {
+                txt.innerText = "🎉 You unlocked FREE USA Shipping!";
+                bar.style.width = '100%';
+            } else {
+                const diff = 35 - subtotal;
+                txt.innerText = `Add $${diff.toFixed(2)} USD for FREE USA Shipping!`;
+                const pct = Math.min(100, (subtotal / 35) * 100);
+                bar.style.width = `${pct}%`;
+            }
+        }
+
+        function toggleCartDrawer(forceOpen = false) {
+            const drawer = document.getElementById('cartDrawer');
+            if (forceOpen) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
+        }
+
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) return;
+
+            let msg = "Hello FURBABY USA! I would like to place an order:\n";
+            msg += "-----------------------------------\n";
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const total = item.price * item.qty;
+                subtotal += total;
+                msg += `${index + 1}. ${item.name} (Qty: ${item.qty}) - $${total.toFixed(2)} USD\n`;
+            });
+
+            const shipping = subtotal >= 35 ? 0 : 5.99;
+            const finalTotal = subtotal + shipping;
+
+            msg += "-----------------------------------\n";
+            msg += `Subtotal: $${subtotal.toFixed(2)} USD\n`;
+            msg += `USA Shipping: ${shipping === 0 ? 'FREE' : '$' + shipping.toFixed(2) + ' USD'}\n`;
+            msg += `TOTAL: $${finalTotal.toFixed(2)} USD\n\n`;
+            msg += "Please confirm availability & delivery details for my USA address!";
+
+            const url = `https://wa.me/19988998899?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+
+        // Quick View Modal
+        function openQuickView(productId) {
+            const p = products.find(prod => prod.id === productId);
+            if (!p) return;
+
+            const waMessage = encodeURIComponent(`Hello FURBABY! I would like to order ${p.name} ($${p.price.toFixed(2)} USD).`);
+            const waLink = `https://wa.me/19988998899?text=${waMessage}`;
+
+            const modalContent = document.getElementById('quickViewContent');
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <img src="${p.image}" alt="${p.name}" class="w-full h-56 md:h-72 object-cover rounded-2xl">
+                    <div class="space-y-3">
+                        <span class="bg-amberYellow-200 text-warmBrown-950 text-xs font-black px-2.5 py-1 rounded-full border border-amberYellow-300">${p.badge}</span>
+                        <h3 class="text-xl font-black text-warmBrown-900 leading-snug">${p.name}</h3>
+                        <div class="flex items-center gap-1.5 text-xs text-amberYellow-500 font-bold">
+                            <i class="fa-solid fa-star"></i>
+                            <span class="text-warmBrown-900">${p.rating}</span>
+                            <span class="text-warmBrown-600 font-normal">(${p.reviews} reviews)</span>
+                        </div>
+                        <p class="text-warmBrown-700 text-xs leading-relaxed">${p.desc}</p>
+                        
+                        <div>
+                            <label class="block text-xs font-extrabold text-warmBrown-900 mb-1">Select Size Option:</label>
+                            <div class="flex gap-2">
+                                <button class="px-3 py-1 border border-amberYellow-300 rounded-lg text-xs font-bold hover:bg-amberYellow-400">S</button>
+                                <button class="px-3 py-1 border border-amberYellow-500 bg-amberYellow-400 rounded-lg text-xs font-bold">M</button>
+                                <button class="px-3 py-1 border border-amberYellow-300 rounded-lg text-xs font-bold hover:bg-amberYellow-400">L</button>
+                                <button class="px-3 py-1 border border-amberYellow-300 rounded-lg text-xs font-bold hover:bg-amberYellow-400">XL</button>
+                            </div>
+                        </div>
+
+                        <div class="pt-1">
+                            <span class="text-2xl font-black text-warmBrown-900">$${p.price.toFixed(2)} USD</span>
+                            <span class="text-xs text-warmBrown-600 line-through ml-2">$${p.origPrice.toFixed(2)}</span>
+                        </div>
+
+                        <div class="space-y-2 pt-1">
+                            <a href="${waLink}" target="_blank" 
+                               class="w-full py-2.5 bg-whatsapp hover:bg-whatsappDark text-white font-black rounded-xl flex items-center justify-center gap-2 text-xs shadow-md">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Buy Instantly via WhatsApp
+                            </a>
+                            <button onclick="addToCart('${p.id}'); closeQuickView();" 
+                                    class="w-full py-2.5 bg-amberYellow-400 text-warmBrown-950 font-black rounded-xl hover:bg-amberYellow-500 transition-colors text-xs border border-amberYellow-500">
+                                Add to Cart Drawer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('quickViewModal').classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        }
+
+        // Wishlist Logic
+        function toggleWishlist(productId) {
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+            } else {
+                wishlist.push(productId);
+            }
+            updateWishlistUI();
+            filterProducts();
+        }
+
+        function updateWishlistUI() {
+            const badge = document.getElementById('wishlistBadge');
+            badge.innerText = wishlist.length;
+            badge.classList.toggle('hidden', wishlist.length === 0);
+
+            const list = document.getElementById('wishlistItemsList');
+            if (wishlist.length === 0) {
+                list.innerHTML = `<p class="text-xs text-warmBrown-600 text-center py-6">Your saved wishlist is empty.</p>`;
+                return;
+            }
+
+            list.innerHTML = wishlist.map(id => {
+                const item = products.find(p => p.id === id);
+                return `
+                    <div class="flex items-center justify-between p-2.5 bg-amberYellow-50 rounded-xl border border-amberYellow-200">
+                        <div class="flex items-center gap-2.5">
+                            <img src="${item.image}" class="w-10 h-10 rounded-lg object-cover">
+                            <div>
+                                <h5 class="text-xs font-bold text-warmBrown-900 line-clamp-1">${item.name}</h5>
+                                <p class="text-xs text-amberYellow-700 font-black">$${item.price.toFixed(2)} USD</p>
+                            </div>
+                        </div>
+                        <button onclick="addToCart('${item.id}'); toggleWishlistModal();" class="text-xs bg-amberYellow-400 text-warmBrown-950 font-black px-2.5 py-1 rounded-lg border border-amberYellow-500">
+                            + Cart
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleWishlistModal() {
+            document.getElementById('wishlistModal').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

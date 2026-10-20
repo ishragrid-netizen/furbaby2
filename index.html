@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FURBABY | USA's Favorite Pet Supplies & Accessories</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FFFDF9',
+                            100: '#FEF3C7',
+                            200: '#FDE68A',
+                            300: '#FCD34D',
+                            400: '#FBBF24',
+                            500: '#F59E0B', /* Warm Yellow / Amber */
+                            600: '#D97706',
+                            700: '#B45309',
+                            800: '#5C381E', /* Deep Warm Brown */
+                            900: '#3D2314', /* Extra Deep Rich Brown */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFDF9;
+            color: #3D2314;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FEF3C7;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+        .glass-header {
+            background: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-brand-50 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-900 text-amber-100 text-xs md:text-sm py-2 px-4 shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <div class="flex items-center space-x-2">
+                <span class="bg-brand-500 text-brand-900 font-bold px-2 py-0.5 rounded text-xs uppercase tracking-wider">USA Special</span>
+                <span> Reasonable Prices & Free Shipping Across the USA!</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/19988998899?text=Hi%20FurBaby,%20I%20have%20an%20inquiry!" target="_blank" class="hover:text-brand-300 transition-colors flex items-center gap-1 font-semibold">
+                    <i class="fab font-bold fa-whatsapp text-emerald-400"></i> Direct Order: +1 9988998899
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-40 glass-header border-b border-brand-200/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-400 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fas fa-paw text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold tracking-tight text-brand-900 block leading-none">FURBABY<span class="text-brand-500">.</span></span>
+                        <span class="text-[10px] font-semibold tracking-widest uppercase text-brand-700">Premium Pet Supplies</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP MENU: Visibly expanded with NO toggle button on lg screen -->
+                <nav class="hidden lg:flex items-center space-x-8 font-semibold text-sm text-brand-900">
+                    <a href="index.html" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Home</a>
+                    <a href="about.html" onclick="openModal('about-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">About Us</a>
+                    <a href="privacy.html" onclick="openModal('privacy-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Privacy Policy</a>
+                    <a href="disclaimer.html" onclick="openModal('disclaimer-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Disclaimer</a>
+                    <a href="contact.html" onclick="openModal('contact-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Contact Us</a>
+               </nav>
+
+                <!-- Actions & Mobile Hamburger Trigger -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <!-- Quick Search Bar Toggle -->
+                    <div class="relative hidden sm:block w-48 lg:w-60">
+                        <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Search dog gear..." 
+                               class="w-full bg-brand-100/50 text-brand-900 placeholder-brand-700/60 text-xs rounded-xl px-3 py-2 pl-9 focus:outline-none focus:ring-2 focus:ring-brand-500 border border-brand-200">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-brand-700/60 text-xs"></i>
+                    </div>
+
+                    <!-- Cart Button -->
+                    <button onclick="toggleCartDrawer()" class="relative bg-brand-100 hover:bg-brand-200 text-brand-900 p-2.5 rounded-xl transition-all flex items-center gap-2 border border-brand-300/50">
+                        <i class="fas fa-shopping-bag text-lg text-brand-800"></i>
+                        <span id="cartCount" class="bg-brand-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                    </button>
+
+                    <!-- MOBILE TOGGLE BUTTON: Only visible on screens smaller than desktop (lg) -->
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl text-brand-900 bg-brand-100 hover:bg-brand-200 focus:outline-none border border-brand-300/50">
+                        <i class="fas fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE NAV MENU (Hidden by default, shown when toggle clicked) -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-brand-200 bg-brand-50 px-4 pt-3 pb-6 space-y-3 shadow-lg">
+            <div class="mb-3 sm:hidden">
+                <input type="text" id="mobileSearchInput" oninput="filterProductsMobile()" placeholder="Search products..." 
+                       class="w-full bg-brand-100 text-brand-900 placeholder-brand-700/60 text-xs rounded-xl px-3 py-2 focus:outline-none border border-brand-300">
+            </div>
+                    <a href="index.html" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Home</a>
+                    <a href="about.html" onclick="openModal('about-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">About Us</a>
+                    <a href="privacy.html" onclick="openModal('privacy-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Privacy Policy</a>
+                    <a href="disclaimer.html" onclick="openModal('disclaimer-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Disclaimer</a>
+                    <a href="contact.html" onclick="openModal('contact-modal')" class="hover:text-brand-600 transition-colors py-1 border-b-2 border-transparent hover:border-brand-500">Contact Us</a>
+               <div class="pt-2">
+                <a href="https://wa.me/19988998899" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm shadow">
+                    <i class="fab fa-whatsapp text-lg"></i> Order via WhatsApp (+1 9988998899)
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO BANNER SECTION -->
+        <section id="home" class="relative overflow-hidden bg-gradient-to-br from-brand-100 via-brand-50 to-amber-100/50 py-12 md:py-20 border-b border-brand-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-brand-200/80 border border-brand-400 text-brand-900 text-xs sm:text-sm font-bold px-3 py-1.5 rounded-full shadow-sm">
+                            <span class="flex h-2 w-2 relative">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-600 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-700"></span>
+                            </span>
+                            Exclusive USA Pet Gear Store & Quick WhatsApp Checkout
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-900 tracking-tight leading-tight">
+                            Pamper Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-800">Fur Babies</span> With Premium Supplies!
+                        </h1>
+                        <p class="text-base sm:text-lg text-brand-800/80 max-w-2xl mx-auto lg:mx-0">
+                            Discover stylish Neck Collars, comfy Clothes, sturdy Bowls, interactive Toys, Gates, Beds, Pet Strollers, Tie-Outs, Crates & Pens, Ramps, Cat Gear, and Extensions. Specially tailored for Golden Retrievers, Shih Tzus, Bulldogs, Huskies & more!
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#catalog" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-brand-600/30 transition-all flex items-center justify-center gap-2 text-base">
+                                <i class="fas fa-shopping-cart"></i> Explore 48+ Products
+                            </a>
+                            <a href="https://wa.me/19988998899?text=Hi%20FurBaby,%20I%20want%20to%20order%20products!" target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-7 py-4 rounded-2xl shadow-md transition-all flex items-center justify-center gap-2 text-base">
+                                <i class="fab fa-whatsapp text-xl"></i> WhatsApp: +1 9988998899
+                            </a>
+                        </div>
+
+                        <!-- Highlights list -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-brand-200/80">
+                            <div class="flex items-center gap-2 justify-center lg:justify-start">
+                                <i class="fas fa-check-circle text-brand-600"></i>
+                                <span class="text-xs font-semibold text-brand-900">Reasonable $ Prices</span>
+                            </div>
+                            <div class="flex items-center gap-2 justify-center lg:justify-start">
+                                <i class="fas fa-truck text-brand-600"></i>
+                                <span class="text-xs font-semibold text-brand-900">USA Nationwide Delivery</span>
+                            </div>
+                            <div class="flex items-center gap-2 justify-center lg:justify-start">
+                                <i class="fas fa-dog text-brand-600"></i>
+                                <span class="text-xs font-semibold text-brand-900">Breed Specific Fitting</span>
+                            </div>
+                            <div class="flex items-center gap-2 justify-center lg:justify-start">
+                                <i class="fas fa-headset text-brand-600"></i>
+                                <span class="text-xs font-semibold text-brand-900">24/7 WhatsApp Support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Showcase Grid -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3 relative">
+                        <div class="space-y-3">
+                            <div class="overflow-hidden rounded-3xl shadow-lg border-2 border-white">
+                                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" alt="Dog Collar & Accessories" class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-3xl shadow-lg border-2 border-white">
+                                <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80" alt="Cute Shih Tzu with clothes" class="w-full h-36 sm:h-40 object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                        </div>
+                        <div class="space-y-3 pt-6">
+                            <div class="overflow-hidden rounded-3xl shadow-lg border-2 border-white">
+                                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80" alt="Golden Retriever with Toys" class="w-full h-36 sm:h-40 object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="overflow-hidden rounded-3xl shadow-lg border-2 border-white">
+                                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=600&q=80" alt="Husky in comfortable pet bed" class="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED DOG BREEDS GUIDE -->
+        <section id="breed-guide" class="py-12 bg-white border-b border-brand-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-100 px-3 py-1 rounded-full">Tailored Essentials</span>
+                    <h2 class="text-3xl font-extrabold text-brand-900 mt-2">Filter & Recommendations by Breed</h2>
+                    <p class="text-sm text-brand-800/80 mt-1">Select your dog breed to filter products recommended for their specific size, energy level, and comfort needs.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <!-- Breed 1: Golden Retriever -->
+                    <div onclick="filterByBreed('Golden Retriever')" class="breed-card cursor-pointer bg-brand-50 border-2 border-brand-200 hover:border-brand-500 rounded-2xl p-4 text-center transition-all hover:shadow-md group">
+                        <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=300&q=80" alt="Golden Retriever" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 group-hover:scale-110 transition-transform shadow">
+                        <h3 class="font-bold text-brand-900 text-sm">Golden Retriever</h3>
+                        <span class="text-[11px] text-brand-700 block mt-1 font-medium">Large • Harnesses & Durable Toys</span>
+                    </div>
+
+                    <!-- Breed 2: Shih Tzu -->
+                    <div onclick="filterByBreed('Shih Tzu')" class="breed-card cursor-pointer bg-brand-50 border-2 border-brand-200 hover:border-brand-500 rounded-2xl p-4 text-center transition-all hover:shadow-md group">
+                        <img src="https://images.unsplash.com/photo-1583511655826-05700d52f4d9?auto=format&fit=crop&w=300&q=80" alt="Shih Tzu" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 group-hover:scale-110 transition-transform shadow">
+                        <h3 class="font-bold text-brand-900 text-sm">Shih Tzu</h3>
+                        <span class="text-[11px] text-brand-700 block mt-1 font-medium">Toy Breed • Cozy Clothes & Small Bowls</span>
+                    </div>
+
+                    <!-- Breed 3: Bulldog -->
+                    <div onclick="filterByBreed('Bulldog')" class="breed-card cursor-pointer bg-brand-50 border-2 border-brand-200 hover:border-brand-500 rounded-2xl p-4 text-center transition-all hover:shadow-md group">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=300&q=80" alt="Bulldog" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 group-hover:scale-110 transition-transform shadow">
+                        <h3 class="font-bold text-brand-900 text-sm">Bulldog</h3>
+                        <span class="text-[11px] text-brand-700 block mt-1 font-medium">Medium/Broad • Wide Collars & Ramps</span>
+                    </div>
+
+                    <!-- Breed 4: Husky -->
+                    <div onclick="filterByBreed('Husky')" class="breed-card cursor-pointer bg-brand-50 border-2 border-brand-200 hover:border-brand-500 rounded-2xl p-4 text-center transition-all hover:shadow-md group">
+                        <img src="https://images.unsplash.com/photo-1605568427561-40dd23c2acea?auto=format&fit=crop&w=300&q=80" alt="Husky" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 group-hover:scale-110 transition-transform shadow">
+                        <h3 class="font-bold text-brand-900 text-sm">Husky</h3>
+                        <span class="text-[11px] text-brand-700 block mt-1 font-medium">High Energy • Heavy Duty Tie-Outs & Gates</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-COMMERCE CATALOG SECTION (12 Categories, 48 Products) -->
+        <section id="catalog" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-widest text-brand-600 bg-brand-100 px-3 py-1 rounded-full">Reasonable USA Prices</span>
+                    <h2 class="text-3xl font-extrabold text-brand-900 mt-2">Explore All Pet Categories</h2>
+                    <p class="text-sm text-brand-800/80">Click any category below to browse items with direct WhatsApp ordering.</p>
+                </div>
+                <!-- Reset Filter Btn -->
+                <button onclick="resetFilters()" class="self-start md:self-auto bg-brand-200 hover:bg-brand-300 text-brand-900 font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-2 border border-brand-300">
+                    <i class="fas fa-sync-alt"></i> Show All 48 Products
+                </button>
+            </div>
+
+            <!-- CATEGORY FILTER PILLS -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-4 custom-scrollbar mb-8 text-xs font-bold" id="categoryTabs">
+                <!-- Javascript will populate / toggle active state -->
+            </div>
+
+            <!-- ACTIVE FILTER BADGE DISPLAY -->
+            <div id="activeFilterBadge" class="hidden mb-6 flex items-center gap-2 text-sm text-brand-900 bg-brand-100 p-3 rounded-xl border border-brand-300">
+                <span>Active Filter: <strong id="filterName">Category</strong></span>
+                <button onclick="resetFilters()" class="ml-auto text-brand-700 hover:text-brand-900 underline text-xs font-bold">Clear Filter</button>
+            </div>
+
+            <!-- PRODUCT GRID (48 TOTAL PRODUCTS DISPLAY) -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Dynamic JavaScript rendering of product cards -->
+            </div>
+            
+            <div id="noResults" class="hidden text-center py-16 bg-brand-100/40 rounded-3xl border border-dashed border-brand-300">
+                <i class="fas fa-search text-4xl text-brand-400 mb-3"></i>
+                <h3 class="text-lg font-bold text-brand-900">No items match your search</h3>
+                <p class="text-xs text-brand-700 mt-1">Try resetting filters or searching for another term like "collar", "toy", or "bed".</p>
+                <button onclick="resetFilters()" class="mt-4 bg-brand-600 text-white px-5 py-2 rounded-xl text-xs font-bold hover:bg-brand-700">Reset Search</button>
+            </div>
+        </section>
+
+        <!-- TRUST & HOW IT WORKS SECTION -->
+        <section class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-900 text-white py-16 my-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-extrabold text-amber-200">How To Order via WhatsApp (+1 9988998899)</h2>
+                    <p class="text-sm text-amber-100/80 mt-2">Fast, personal, and reliable shopping experience for pet owners across North America.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-brand-800/60 p-6 rounded-2xl border border-brand-700/50">
+                        <div class="w-14 h-14 bg-brand-500 text-brand-900 font-extrabold text-xl rounded-2xl flex items-center justify-center mx-auto mb-4">1</div>
+                        <h3 class="font-bold text-lg text-white">Select Your Products</h3>
+                        <p class="text-xs text-amber-100/70 mt-2">Browse neck collars, clothes, strollers, beds, and more. Add items to your cart or click "Buy via WhatsApp".</p>
+                    </div>
+
+                    <div class="bg-brand-800/60 p-6 rounded-2xl border border-brand-700/50">
+                        <div class="w-14 h-14 bg-emerald-500 text-white font-extrabold text-xl rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fab fa-whatsapp"></i></div>
+                        <h3 class="font-bold text-lg text-white">Send Order Message</h3>
+                        <p class="text-xs text-amber-100/70 mt-2">Our site automatically drafts your product code & prices to our official WhatsApp helpline: <strong>+1 9988998899</strong>.</p>
+                    </div>
+
+                    <div class="bg-brand-800/60 p-6 rounded-2xl border border-brand-700/50">
+                        <div class="w-14 h-14 bg-brand-500 text-brand-900 font-extrabold text-xl rounded-2xl flex items-center justify-center mx-auto mb-4">3</div>
+                        <h3 class="font-bold text-lg text-white">Fast Doorstep Delivery</h3>
+                        <p class="text-xs text-amber-100/70 mt-2">Confirm delivery address in USA, complete payment via preferred method, and enjoy quick dispatch!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SHOPPING CART DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-all">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                <!-- Drawer Header -->
+                <div class="p-6 bg-brand-900 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-shopping-bag text-brand-400 text-xl"></i>
+                        <h2 class="text-lg font-bold">Your FURBABY Cart</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-brand-200 hover:text-white p-1">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Cart Items -->
+                <div class="p-6 flex-1 overflow-y-auto custom-scrollbar" id="cartItemsList">
+                    <!-- Items rendered dynamically -->
+                </div>
+
+                <!-- Drawer Footer & Checkout -->
+                <div class="p-6 bg-brand-50 border-t border-brand-200 space-y-4">
+                    <div class="flex justify-between items-center text-sm font-bold text-brand-900">
+                        <span>Total (USD):</span>
+                        <span id="cartTotal" class="text-xl text-brand-700">$0.00</span>
+                    </div>
+                    <p class="text-[11px] text-brand-800/70">Prices include reasonable standard tax. Shipping calculated directly on WhatsApp.</p>
+                    
+                    <button onclick="checkoutCartWhatsApp()" id="checkoutBtn" disabled class="w-full bg-emerald-600 disabled:opacity-50 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 text-sm transition-all">
+                        <i class="fab fa-whatsapp text-lg"></i> Checkout via WhatsApp (+1 9988998899)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW PRODUCT MODAL -->
+    <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl border border-brand-200 relative animate-fadeIn">
+            <button onclick="closeModal('productModal')" class="absolute top-4 right-4 z-10 bg-brand-100 hover:bg-brand-200 text-brand-900 w-9 h-9 rounded-full flex items-center justify-center shadow">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="productModalContent" class="p-6 md:p-8">
+                <!-- Dynamic Content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- INFORMATIONAL MODALS (About, Privacy, Disclaimer, Contact) -->
+    <!-- About Us Modal -->
+    <div id="about-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('about-modal')" class="absolute top-4 right-4 text-brand-900 hover:text-brand-600"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-extrabold text-brand-900 mb-4 flex items-center gap-2"><i class="fas fa-paw text-brand-500"></i> About FURBABY</h2>
+            <div class="space-y-3 text-xs sm:text-sm text-brand-800 leading-relaxed">
+                <p><strong>FURBABY</strong> is North America's dedicated destination for premium, high-quality, and reasonably priced dog & pet products. Built with love for pets and convenience for owners, we curate products engineered for durability, comfort, and safety.</p>
+                <p>Whether you own a energetic Golden Retriever, a charming Shih Tzu, a sturdy Bulldog, or an adventurous Husky, our items—from neck collars, stylish apparel, interactive toys to ramps and strollers—are checked for maximum pet happiness.</p>
+                <p>We operate directly with customers across the USA through fast WhatsApp assistance, ensuring personalized care, custom size recommendations, and instant responses at <strong>+1 9988998899</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('privacy-modal')" class="absolute top-4 right-4 text-brand-900 hover:text-brand-600"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-extrabold text-brand-900 mb-4 flex items-center gap-2"><i class="fas fa-shield-alt text-brand-500"></i> Privacy & Policy</h2>
+            <div class="space-y-3 text-xs sm:text-sm text-brand-800 leading-relaxed">
+                <p>At <strong>FURBABY</strong>, we prioritize the protection of your personal information.</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li><strong>Information Collection:</strong> We only collect minimal information (such as your name, delivery address, and phone number) when you place orders via WhatsApp (+1 9988998899).</li>
+                    <li><strong>Usage:</strong> Your information is solely utilized for order fulfillment, dispatching tracking updates, and customer support.</li>
+                    <li><strong>Third-Party Sharing:</strong> We do not sell or rent your personal data to any third-party marketers.</li>
+                    <li><strong>Security:</strong> All communication through WhatsApp is encrypted end-to-end for your security.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclaimer Modal -->
+    <div id="disclaimer-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('disclaimer-modal')" class="absolute top-4 right-4 text-brand-900 hover:text-brand-600"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-extrabold text-brand-900 mb-4 flex items-center gap-2"><i class="fas fa-exclamation-triangle text-brand-500"></i> Store Disclaimer</h2>
+            <div class="space-y-3 text-xs sm:text-sm text-brand-800 leading-relaxed">
+                <p><strong>General Notice:</strong> Products sold on FURBABY are meant strictly for household pets. Always supervise your dog or cat when using toys, tie-outs, strollers, crates, or wearing collars and clothing.</p>
+                <p><strong>Pricing & Currency:</strong> All listed prices are in US Dollars ($ USD) and subject to availability. Prices are kept highly reasonable and competitive across USA markets.</p>
+                <p><strong>Breed Suitability:</strong> Breed tags (Golden Retriever, Shih Tzu, Bulldog, Husky) serve as helpful sizing guides. Please measure your pet before purchasing to guarantee perfect fit!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 hidden backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('contact-modal')" class="absolute top-4 right-4 text-brand-900 hover:text-brand-600"><i class="fas fa-times text-xl"></i></button>
+            <h2 class="text-2xl font-extrabold text-brand-900 mb-4 flex items-center gap-2"><i class="fas fa-envelope text-brand-500"></i> Contact FURBABY</h2>
+            <form onsubmit="handleContactSubmit(event)" class="space-y-3 text-xs sm:text-sm">
+                <div>
+                    <label class="block font-bold text-brand-900 mb-1">Your Name</label>
+                    <input type="text" required class="w-full bg-brand-50 border border-brand-300 rounded-xl p-2.5 focus:ring-2 focus:ring-brand-500 outline-none" placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block font-bold text-brand-900 mb-1">WhatsApp Number / Email</label>
+                    <input type="text" required class="w-full bg-brand-50 border border-brand-300 rounded-xl p-2.5 focus:ring-2 focus:ring-brand-500 outline-none" placeholder="+1 ...">
+                </div>
+                <div>
+                    <label class="block font-bold text-brand-900 mb-1">Message / Product Inquiry</label>
+                    <textarea rows="3" required class="w-full bg-brand-50 border border-brand-300 rounded-xl p-2.5 focus:ring-2 focus:ring-brand-500 outline-none" placeholder="Ask us anything about dog sizing, collar materials, or shipping..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 rounded-xl shadow">Send Message</button>
+            </form>
+            <div class="mt-4 pt-4 border-t border-brand-200 text-center">
+                <span class="text-xs text-brand-800">Or reach directly via USA WhatsApp line:</span>
+                <a href="https://wa.me/19988998899" target="_blank" class="mt-1 block text-emerald-600 font-bold text-sm hover:underline"><i class="fab fa-whatsapp"></i> +1 9988998899</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-brand-900 text-brand-100 pt-16 pb-8 border-t-4 border-brand-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-brand-800">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center text-brand-900">
+                            <i class="fas fa-paw text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-extrabold text-white tracking-tight">FURBABY<span class="text-brand-400">.</span></span>
+                    </div>
+                    <p class="text-xs text-brand-200/80 leading-relaxed max-w-sm">
+                        USA’s premier online outlet for top-notch Dog Neck Collars, Apparel, Feeding Bowls, Toys, Gates, Beds, Strollers, Tie-Outs, Crates, Ramps, Cat Accessories & Parts at reasonable prices!
+                    </p>
+                    <div class="pt-2">
+                        <a href="https://wa.me/19988998899" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-xs transition-all shadow">
+                            <i class="fab fa-whatsapp text-base"></i> WhatsApp Helpline: +1 9988998899
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-700 pb-2">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="index.html" class="hover:text-brand-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-400 transition-colors">About Us </a></li>
+                        <li><a href="privacy.html" class="hover:text-brand-400 transition-colors">Privacy</a></li>
+                        <li><a href="disclaimer.html" onclick="openModal('about-modal')" class="hover:text-brand-400 transition-colors">Disclaimer</a></li>
+                        <li><a href="contact.html" onclick="openModal('about-modal')" class="hover:text-brand-400 transition-colors">Contact us</a></li>
+                   
+                 </ul>
+                </div>
+
+                <!-- Col 3: Policy & Info -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-700 pb-2">Customer Care</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#privacy" onclick="openModal('privacy-modal')" class="hover:text-brand-400 transition-colors">Privacy & Policy</a></li>
+                        <li><a href="#disclaimer" onclick="openModal('disclaimer-modal')" class="hover:text-brand-400 transition-colors">Disclaimer</a></li>
+                        <li><a href="#contact" onclick="openModal('contact-modal')" class="hover:text-brand-400 transition-colors">Contact Us</a></li>
+                        <li><a href="https://wa.me/19988998899" target="_blank" class="hover:text-brand-400 transition-colors">Order Status on WhatsApp</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Featured Dog Breeds -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-700 pb-2">Popular Breeds</h4>
+                    <ul class="space-y-2 text-xs">
+                       <li><a href="index.html" class="hover:text-brand-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-brand-400 transition-colors">About Us </a></li>
+                        <li><a href="privacy.html" class="hover:text-brand-400 transition-colors">Privacy</a></li>
+                        <li><a href="disclaimer.html" onclick="openModal('about-modal')" class="hover:text-brand-400 transition-colors">Disclaimer</a></li>
+                        <li><a href="contact.html" onclick="openModal('about-modal')" class="hover:text-brand-400 transition-colors">Contact us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-brand-200/60 gap-4">
+                <p>&copy; 2026 FURBABY USA Pet Supplies. All Rights Reserved.</p>
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-lock text-brand-400 mr-1"></i> SSL 256-Bit Secure</span>
+                    <span><i class="fas fa-dollar-sign text-brand-400 mr-1"></i> Reasonable USD Pricing</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data Structure: 12 Categories x 4 Products = 48 total products
+        const categories = [
+            "Neck Collars", "Clothes", "Bowls", "Toys", 
+            "Gates", "Beds", "Pet Strollers", "Tie-Outs", 
+            "Crates & Pens", "Ramps", 
+        ];
+
+        const products = [
+            // 1. Neck Collars (4)
+            { id: 1, category: "Neck Collars", name: "Padded Leather Dog Collar", price: 18.99, breed: "Golden Retriever", image: "https://tiimg.tistatic.com/fp/1/009/282/genuine-leather-cream-padded-dog-collar-684.jpg", desc: "Durable genuine leather collar with soft interior padding for neck comfort during long walks." },
+            { id: 2, category: "Neck Collars", name: "Reflective Night Safety Collar", price: 14.50, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvfhX3ddxaW9r1eR2T-VPBWiNbE3CHujjJ6nG2V_dubg&s", desc: "3M high-visibility reflective stitching ideal for evening walks with energetic Huskies." },
+            { id: 3, category: "Neck Collars", name: "Soft Velvet Bowtie Collar", price: 12.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqCrTaCyXE2uLRFXlAsFHY9juJRXva-2MKSpPbV1bF7A&s=10", desc: "Cute lightweight velvet collar with detachable bowtie tailored for Shih Tzus." },
+            { id: 4, category: "Neck Collars", name: "Heavy Duty Tactical Collar", price: 24.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6z7iz0AH9ibhtH0ygRk5BpvKtlPuz_vLYrNXt2o39Ug&s=10", desc: "Extra wide nylon collar with control handle engineered for thick-necked Bulldogs." },
+
+            // 2. Clothes (4)
+            { id: 5, category: "Clothes", name: "Cozy Fleece Winter Hoodie", price: 22.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuUWnviiLv3RhjshTjJ6uvkY_eP7DQUp1maJOG2_B15Q&s", desc: "Warm and stylish hoodie keeping small breeds cozy during chilly USA winters." },
+            { id: 6, category: "Clothes", name: "Waterproof Dog Raincoat", price: 27.50, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH-QsyJhY8OL_nrPPIBPt9UlrqAoQGlQhCTN1cblTLAw&s", desc: "Full coverage raincoat with clear hood protecting golden fur from mud and rain." },
+            { id: 7, category: "Clothes", name: "Wide Chest Denim Jacket", price: 29.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3iGeBlPr7UAfqzBvXXX4z7xcRpbZ8NBaxKTtXmw542A&s=10", desc: "Stretchable denim jacket specifically fitted for muscular chest builds." },
+            { id: 8, category: "Clothes", name: "Snow Sport Arctic Vest", price: 34.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6rOXaoVpYuhtuZwiTRfZxoZ8qYmspz0TaQ-2zjke5RQ&s=10", desc: "Insulated sport vest with leash portal for active high-altitude winter adventures." },
+
+            // 3. Bowls (4)
+            { id: 9, category: "Bowls", name: "Non-Slip Stainless Steel Dual Bowl", price: 19.99, breed: "All Breeds", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6vpCWMWET4lNyL6HuxDg_fIt0lR607gUiEM0CiKnALA&s=10", desc: "Rust-resistant twin stainless steel bowls with rubber base to prevent sliding." },
+            { id: 10, category: "Bowls", name: "Slow Feeder Puzzle Dog Bowl", price: 15.99, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw4NxHOrrwGgXrSH8BVsDyHF7KdpIDgOe_HOo3Z_cxhQ&s=10", desc: "Helps prevent bloat and indigestion by extending mealtime fun." },
+            { id: 11, category: "Bowls", name: "Elevated Bamboo Pet Diner", price: 32.99, breed: "Bulldog", image: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQxNHS_7SH0-dbIhplfL88P7nNv5yUMTQnJiuYZL-15xw9w5szYkMKzgQ_jwm7LUdBP6jZBGq6YZ8IecIkI3vaKEtLKWArGBh5MYUwi0ibrXqY9svf_QfcowXd6LAQHM160sQG0h-k&usqp=CAc", desc: "Raised feeding stand reducing neck strain for flatter face breeds." },
+            { id: 12, category: "Bowls", name: "Automatic Water Dispenser Fountain", price: 39.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZiLXDC56hOqNmxBdh8-zMrAChs6ZkkuvHrYALA9raAA&s=10", desc: "2.5L filtered water fountain encouraging healthy hydration all day." },
+
+            // 4. Toys (4)
+            { id: 13, category: "Toys", name: "Indestructible Rubber Chew Bone", price: 13.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE3bSaaPboZCeNw1I9IZpRVyXBve8Que3Jn1Mn9cd-Nw&s=10", desc: "Tough natural rubber toy designed for powerful chewers." },
+            { id: 14, category: "Toys", name: "Interactive Squeaky Plush Bear", price: 11.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQMPVmstf9fmtK8qKW7tMPf31mpTW7rw-JXERXcvIVbQ&s=10", desc: "Soft plush toy with internal squeaker to keep small dogs entertained." },
+            { id: 15, category: "Toys", name: "High-Bounce Tennis Ball 4-Pack", price: 12.50, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlr0LmwjiVVJ2ekbExDRT_BachfzaCsCxV5WvbK8-0Kw&s=10", desc: "Durable non-abrasive felt balls perfect for endless fetch sessions in the yard." },
+            { id: 16, category: "Toys", name: "Tug-of-War Cotton Rope Toy", price: 16.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToxNmQ_CI3Zy3-YHs0Amu3DL5oxn7mKpMoNjoVV2qHeA&s=10", desc: "Triple-knotted heavy rope promotes dental health and satisfies pulling instincts." },
+
+            // 5. Gates (4)
+            { id: 17, category: "Gates", name: "Extra Wide Pressure Mount Safety Gate", price: 54.99, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMr4tMS6kP9TCMK9o8rj2Jf-VM01P1bqcG2SNd8nonqA&s=10", desc: "Sturdy steel gate with walkthrough door for doorways and staircases." },
+            { id: 18, category: "Gates", name: "Freestanding Folding Wooden Pet Gate", price: 62.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM8UKbS9JNfwoAeLSfqT_KxkjVVFd-aHjLClI7K3LEog&s=10", desc: "3-panel decorative wooden barrier needing no wall installation." },
+            { id: 19, category: "Gates", name: "Tall Heavy-Duty Mesh Retractable Gate", price: 49.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPJJk3tnmfrWjNnJ24XfIHxJm0js3HTdZussocNtKhGw&s=10", desc: "33-inch tall retractable mesh barrier preventing high jumpers from roaming." },
+            { id: 20, category: "Gates", name: "Auto-Close Steel Security Gate", price: 59.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdtUjnpJgEQD8WTV2xqk0N6ffNcaYqmUpSF7yHwR85vQ&s=10", desc: "Dual-locking magnetic door latch opens both ways smoothly." },
+
+            // 6. Beds (4)
+            { id: 21, category: "Beds", name: "Orthopedic Memory Foam Pet Bed", price: 45.99, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgp9XBXSfQANYjTmPgXUuYC5JzRqTy40QBBk_CO12DZw&s=10", desc: "Relieves joint pain with dense therapeutic foam mattress." },
+            { id: 22, category: "Beds", name: "Calming Donut Plush Round Bed", price: 28.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2V7XEgF36NtmH6pCKEuOUXo-ztlNUwsMGskAHa7rYhA&s=10", desc: "Self-warming faux shag fur donut bed reduces anxiety for small dogs." },
+            { id: 23, category: "Beds", name: "Elevated Outdoor Cooling Bed", price: 36.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw4Q07TckS300yaR66Bza1K_WGr21MkYl3_p4vAFhIKQ&s=10", desc: "Breathable mesh canvas raised off hot patio surfaces for maximum airflow." },
+            { id: 24, category: "Beds", name: "Heavy Duty Bolster Lounge Bed", price: 49.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjJmlbYtt37j8RKpQoy5LU_Q_0JEJ360Ypv9b88a4k4w&s", desc: "Thick cushioned headrest walls supporting heavy sleeping posture." },
+
+            // 7. Pet Strollers (4)
+            { id: 25, category: "Pet Strollers", name: "3-Wheel All-Terrain Pet Stroller", price: 89.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCM_g4TUMy9rqxdmEjcpvZ7yyGNCUf9QAHauqijnsMeQ&s=10", desc: "Smooth suspension, cup holders, and mesh ventilation for city walks." },
+            { id: 26, category: "Pet Strollers", name: "Foldable Double Pet Travel Stroller", price: 119.99, breed: "All Breeds", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_PPZ-0QYomE3BCNASxbpZ7apTAN1efCHzp76sb6tZWg&s=10", desc: "Twin tier compartments ideal for carrying multiple small dogs comfortably." },
+            { id: 27, category: "Pet Strollers", name: "Heavy Capacity Jogger Stroller", price: 139.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgfAix5Wl-n2qMPZaWFav8SsaKf36y6mN43jH-r_OAOQ&s=10", desc: "Supports up to 70 lbs for senior or recovering dogs who love outdoor breezes." },
+            { id: 28, category: "Pet Strollers", name: "Compact Airline Travel Stroller", price: 79.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQclHIRI_DPndJAigpSqYWVXqXuKcgYsVVOo1CfYVVvCQ&s", desc: "One-hand quick fold system fits easily in car trunks." },
+
+            // 8. Tie-Outs (4)
+            { id: 29, category: "Tie-Outs", name: "30ft Shock-Absorbing Tie-Out Cable", price: 19.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsGH6IYcXIu2FCkzO68tw7B2fLmxdWZrKjN5DRJgbHag&s=10", desc: "Vinyl-coated steel cable with buffer spring to protect dogs while roaming yards." },
+            { id: 30, category: "Tie-Outs", name: "Heavy Duty Spiral Ground Stake", price: 14.99, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW4Gr0ihi-IxqUYM1RrKn-2NjJk0s9T-HVKPLcSwlvIw&s=10", desc: "360-degree swivel ring stake holds securely in soil without tangling." },
+            { id: 31, category: "Tie-Outs", name: "Tangle-Free Dual Dog Tie Cable", price: 24.99, breed: "All Breeds", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8g28zphLLqeCs9znNR7t-Q_VbHdJAnpSFgwYSf2K4A&s=10", desc: "Allows two pets to enjoy camping trips safely without leash knots." },
+            { id: 32, category: "Tie-Outs", name: "Lightweight Small Dog Cable System", price: 12.99, breed: "Shih Tzu", image: "https://m.media-amazon.com/images/I/71LUQDf-63L._AC_UF1000,1000_QL80_.jpg", desc: "Flexible 15ft lead coated with weather-proof plastic cover." },
+
+            // 9. Crates & Pens (4)
+            { id: 33, category: "Crates & Pens", name: "Double-Door Folding Metal Wire Crate", price: 58.99, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTAqyhP-0lPB-e28CbKeG_edlIcJAV2WeIfrEbuyYaGg&s", desc: "Includes removable tray divider panel for puppy training stages." },
+            { id: 34, category: "Crates & Pens", name: "Heavy-Duty Escape-Proof Dog Crate", price: 129.99, breed: "Husky", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2s7xybnhv6VFZzvqhhXVV97IU5PuE-rn-cbQsZX-8Gw&s=10", desc: "Reinforced 20-gauge steel frame with lockable wheels for strong breeds." },
+            { id: 35, category: "Crates & Pens", name: "Portable Soft-Sided Exercise Playpen", price: 38.99, breed: "Shih Tzu", image: "https://m.media-amazon.com/images/I/71xjcaDkFeL._AC_SL3840_.jpg", desc: "8-panel popup nylon playpen ideal for indoor play or outdoor grass rest." },
+            { id: 36, category: "Crates & Pens", name: "Wooden Furniture Style Dog Crate", price: 149.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUUMSW99DyZOBsHoyVd1bicF4r0BySGSFad1g2ST82bg&s", desc: "Elegant end-table wooden design blends seamlessly with living room decor." },
+
+            // 10. Ramps (4)
+            { id: 37, category: "Ramps", name: "Folding Telescopic Pet Ramp", price: 69.99, breed: "Bulldog", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5Vf83hzRL47fDE-mNpLHfdVvqre1BLnlF1o4EWNasA&s=10", desc: "High traction surface helps dogs enter SUVs and trucks without jumping." },
+            { id: 38, category: "Ramps", name: "Adjustable Wooden Bed Ramp", price: 59.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwv-75SGhYgCCjoG6Gxh-Z361qHriqreOFHzxr_6xRKw&s=10", desc: "Non-slip ribbed carpet ramp with 4 adjustable height settings for high beds." },
+            { id: 39, category: "Ramps", name: "High-Density Foam Pet Steps", price: 34.99, breed: "Shih Tzu", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwcp2Xbk9HKripioyApG7nHsfvFjREj5n1-UzD-V0gWg&s", desc: "Soft 3-tier foam steps protecting joints of small or elderly pets." },
+            { id: 40, category: "Ramps", name: "Heavy Capacity Outdoor SUV Ramp", price: 84.99, breed: "Golden Retriever", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBrO_L91IiS_yb94tXyfrAwoX6Cd7MEdQNfXrbkpD4sQ&s", desc: "Extra wide ramp tested up to 200 lbs with safety latch mechanism." },
+
+          ];
+
+        // App State
+        let selectedCategory = "All";
+        let selectedBreed = "All";
+        let cart = [];
+
+        // INITIALIZATION
+        window.onload = function() {
+            renderCategoryTabs();
+            renderProducts(products);
+        };
+
+        // Render Category Filter Pills
+        function renderCategoryTabs() {
+            const tabsContainer = document.getElementById('categoryTabs');
+            let html = `
+                <button onclick="filterByCategory('All')" id="tab-All" class="cat-pill bg-brand-600 text-white px-4 py-2 rounded-xl whitespace-nowrap shadow-sm transition-all hover:bg-brand-700">
+                    <i class="fas fa-th-large mr-1"></i> All Categories (48)
+                </button>
+            `;
+
+            categories.forEach(cat => {
+                html += `
+                    <button onclick="filterByCategory('${cat}')" id="tab-${cat.replace(/\s+/g, '')}" class="cat-pill bg-white border border-brand-200 text-brand-900 hover:bg-brand-100 px-4 py-2 rounded-xl whitespace-nowrap shadow-sm transition-all">
+                        ${cat}
+                    </button>
+                `;
+            });
+            tabsContainer.innerHTML = html;
+        }
+
+        // Render Products
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            let html = '';
+            items.forEach(p => {
+                const waLink = `https://wa.me/19988998899?text=Hi%20FurBaby,%20I%20want%20to%20buy%20${encodeURIComponent(p.name)}%20(ID:${p.id})%20priced%20at%20$${p.price.toFixed(2)}`;
+                
+                html += `
+                    <div class="bg-white border border-brand-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                        <div class="relative overflow-hidden bg-brand-100/30">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-sm text-brand-200 text-[10px] font-bold px-2.5 py-1 rounded-lg">
+                                ${p.category}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-brand-500 text-brand-900 text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow-sm">
+                                <i class="fas fa-paw mr-0.5"></i> ${p.breed}
+                            </span>
+                        </div>
+
+                        <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+                            <div>
+                                <h3 class="font-bold text-brand-900 text-base leading-snug group-hover:text-brand-600 transition-colors">${p.name}</h3>
+                                <p class="text-xs text-brand-800/70 mt-1 line-clamp-2">${p.desc}</p>
+                            </div>
+
+                            <div class="pt-2 border-t border-brand-100 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-brand-700 block uppercase font-semibold">Price (USD)</span>
+                                    <span class="text-xl font-extrabold text-brand-900">$${p.price.toFixed(2)}</span>
+                                </div>
+                                <button onclick="openQuickView(${p.id})" class="text-xs bg-brand-100 hover:bg-brand-200 text-brand-900 px-3 py-1.5 rounded-lg font-bold transition-colors">
+                                    <i class="fas fa-eye mr-1"></i> Details
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                <button onclick="addToCart(${p.id})" class="w-full bg-brand-200 hover:bg-brand-300 text-brand-900 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1 transition-colors">
+                                    <i class="fas fa-cart-plus"></i> Add Cart
+                                </button>
+                                <a href="${waLink}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1 transition-colors shadow">
+                                    <i class="fab fa-whatsapp"></i> Buy $${p.price.toFixed(2)}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+
+        // Category Filtering
+        function filterByCategory(category) {
+            selectedCategory = category;
+            selectedBreed = "All";
+            updateTabStyles();
+            applyFilters();
+        }
+
+        // Breed Filtering
+        function filterByBreed(breed) {
+            selectedBreed = breed;
+            selectedCategory = "All";
+            updateTabStyles();
+            applyFilters();
+        }
+
+        function updateTabStyles() {
+            const pills = document.querySelectorAll('.cat-pill');
+            pills.forEach(p => {
+                p.classList.remove('bg-brand-600', 'text-white');
+                p.classList.add('bg-white', 'text-brand-900', 'border', 'border-brand-200');
+            });
+
+            const activeTabId = selectedCategory === 'All' ? 'tab-All' : `tab-${selectedCategory.replace(/\s+/g, '')}`;
+            const activeTab = document.getElementById(activeTabId);
+            if (activeTab) {
+                activeTab.classList.remove('bg-white', 'text-brand-900');
+                activeTab.classList.add('bg-brand-600', 'text-white');
+            }
+
+            // Update filter badge UI
+            const badge = document.getElementById('activeFilterBadge');
+            const filterName = document.getElementById('filterName');
+            if (selectedCategory !== 'All' || selectedBreed !== 'All') {
+                badge.classList.remove('hidden');
+                filterName.innerText = selectedCategory !== 'All' ? `Category: ${selectedCategory}` : `Breed Guide: ${selectedBreed}`;
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function applyFilters() {
+            let filtered = products;
+
+            if (selectedCategory !== 'All') {
+                filtered = filtered.filter(p => p.category === selectedCategory);
+            }
+
+            if (selectedBreed !== 'All') {
+                filtered = filtered.filter(p => p.breed === selectedBreed || p.breed === "All Breeds");
+            }
+
+            renderProducts(filtered);
+        }
+
+        function resetFilters() {
+            selectedCategory = "All";
+            selectedBreed = "All";
+            document.getElementById('searchInput').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            updateTabStyles();
+            renderProducts(products);
+        }
+
+        // Search Filters
+        function filterProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query) ||
+                p.desc.toLowerCase().includes(query) ||
+                p.breed.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        }
+
+        function filterProductsMobile() {
+            const query = document.getElementById('mobileSearchInput').value.toLowerCase();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query) ||
+                p.desc.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        }
+
+        // CART FUNCTIONS
+        function addToCart(productId) {
+            const item = products.find(p => p.id === productId);
+            const existing = cart.find(c => c.id === productId);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...item, qty: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer(true);
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartList = document.getElementById('cartItemsList');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
+            const totalPrice = cart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+
+            cartCount.innerText = totalQty;
+            cartTotal.innerText = `$${totalPrice.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartList.innerHTML = `
+                    <div class="text-center py-12">
+                        <i class="fas fa-shopping-basket text-4xl text-brand-300 mb-3"></i>
+                        <p class="text-sm font-bold text-brand-900">Your shopping cart is empty!</p>
+                        <p class="text-xs text-brand-700 mt-1">Explore our 48 reasonably priced products and add your favorites.</p>
+                    </div>
+                `;
+                checkoutBtn.disabled = true;
+                return;
+            }
+
+            checkoutBtn.disabled = false;
+            let html = '';
+            cart.forEach(item => {
+                html += `
+                    <div class="flex items-center gap-3 py-3 border-b border-brand-100">
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-xl border border-brand-200">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-brand-900 text-xs">${item.name}</h4>
+                            <span class="text-xs text-brand-700">$${item.price.toFixed(2)} each</span>
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="changeQty(${item.id}, -1)" class="w-5 h-5 bg-brand-200 rounded flex items-center justify-center text-xs font-bold">-</button>
+                                <span class="text-xs font-bold">${item.qty}</span>
+                                <button onclick="changeQty(${item.id}, 1)" class="w-5 h-5 bg-brand-200 rounded flex items-center justify-center text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs font-extrabold text-brand-900 block">$${(item.price * item.qty).toFixed(2)}</span>
+                            <button onclick="removeFromCart(${item.id})" class="text-[10px] text-red-500 hover:underline mt-1">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+            cartList.innerHTML = html;
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(c => c.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(id);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(c => c.id !== id);
+            updateCartUI();
+        }
+
+        function toggleCartDrawer(openState) {
+            const drawer = document.getElementById('cartDrawer');
+            if (openState === true) {
+                drawer.classList.remove('hidden');
+            } else if (openState === false) {
+                drawer.classList.add('hidden');
+            } else {
+                drawer.classList.toggle('hidden');
+            }
+        }
+
+        function checkoutCartWhatsApp() {
+            if (cart.length === 0) return;
+
+            let msg = "Hi FURBABY, I would like to place an order from USA:\n\n";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const sub = item.price * item.qty;
+                total += sub;
+                msg += `${index + 1}. ${item.name} x${item.qty} - $${sub.toFixed(2)}\n`;
+            });
+
+            msg += `\n*Total Cart Amount: $${total.toFixed(2)}*\n\nPlease confirm availability and payment details. Thank you!`;
+
+            const waUrl = `https://wa.me/19988998899?text=${encodeURIComponent(msg)}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // QUICK VIEW MODAL
+        function openQuickView(productId) {
+            const p = products.find(item => item.id === productId);
+            if (!p) return;
+
+            const modalContent = document.getElementById('productModalContent');
+            const waLink = `https://wa.me/19988998899?text=Hi%20FurBaby,%20I%20want%20to%20buy%20${encodeURIComponent(p.name)}%20(ID:${p.id})%20priced%20at%20$${p.price.toFixed(2)}`;
+
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <img src="${p.image}" alt="${p.name}" class="w-full h-64 md:h-80 object-cover rounded-2xl border-2 border-brand-100 shadow">
+                    <div class="space-y-4">
+                        <span class="bg-brand-100 text-brand-800 text-xs font-bold px-2.5 py-1 rounded-lg uppercase tracking-wider">${p.category}</span>
+                        <h2 class="text-2xl font-extrabold text-brand-900 leading-tight">${p.name}</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl font-extrabold text-brand-900">$${p.price.toFixed(2)}</span>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Reasonable Price Guarantee</span>
+                        </div>
+                        <p class="text-xs text-brand-800 leading-relaxed">${p.desc}</p>
+                        <div class="p-3 bg-brand-50 border border-brand-200 rounded-xl text-xs space-y-1 text-brand-900">
+                            <div><strong>Recommended Breed:</strong> ${p.breed}</div>
+                            <div><strong>USA Shipping:</strong> Fast Doorstep Delivery</div>
+                            <div><strong>Direct Support:</strong> +1 9988998899</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <button onclick="addToCart(${p.id}); closeModal('productModal');" class="bg-brand-200 hover:bg-brand-300 text-brand-900 font-bold py-3 rounded-xl text-xs shadow flex items-center justify-center gap-1">
+                                <i class="fas fa-cart-plus"></i> Add To Cart
+                            </button>
+                            <a href="${waLink}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs shadow flex items-center justify-center gap-1">
+                                <i class="fab fa-whatsapp text-sm"></i> WhatsApp Buy
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        // Generic Modal Handler
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle Button (Visible only on mobile/tablet screens < lg)
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        }
+
+        // Contact Form Fake Handler
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert("Thank you for contacting FURBABY! We will also open WhatsApp (+1 9988998899) so you can get an immediate reply.");
+            window.open("https://wa.me/19988998899?text=Hi%20FurBaby,%20I%20just%20submitted%20an%20inquiry%20form!", "_blank");
+            closeModal('contact-modal');
+        }
+    </script>
+</body>
+</html>
